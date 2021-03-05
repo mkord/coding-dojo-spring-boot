@@ -1,20 +1,21 @@
-package com.assignment.spring;
+package com.assignment.spring.data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "weather")
 public class WeatherEntity {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String city;
-
     private String country;
-
-    private Double temperature;
+    private BigDecimal temperature;
 
     public Integer getId() {
         return id;
@@ -40,11 +41,11 @@ public class WeatherEntity {
         this.country = country;
     }
 
-    public Double getTemperature() {
+    public BigDecimal getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Double temperature) {
+    public void setTemperature(BigDecimal temperature) {
         this.temperature = temperature;
     }
 }

@@ -1,1 +1,18 @@
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+    url: jdbc:postgresql://localhost:5432/weather-db
+    username: weather-db
+    password: Ather2021#
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+  openweather:
+    url: http://api.openweathermap.org/data/2.5/weather
+    appid: c95bcc176fcd165de1d38eed87d52037
 
