@@ -1,21 +1,26 @@
-# Run PostgreSQL in docker
+Run PostgreSQL in docker
+---
+
 ```
 docker run -d --name dev-postgres -e POSTGRES_USER=weather-db -e POSTGRES_PASSWORD=Ather2021# -e POSTGRES_DB=weather-db -v ${HOME}/postgres-data/:/var/lib/postgresql/data -p 5432:5432 postgres
 ```
-## Create schema
+Create schema
+---
 (Execute next command from project root)
 ```
 cat src/main/resources/data/schema.sql | docker exec -i dev-postgres psql -U weather-db -d weather-db
 ```
 
-# To run application with profile `prod` 
+To run application with profile `prod`
+--- 
 Create environment variable
 ```
-export JASYPT_ENCRYPTOR_PASSWORD=secret-weather-app-data-prod
+export JASYPT_ENCRYPTOR_PASSWORD=secret-weather-app-data
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-# To re-encrypt with new `some-new-secret-password`
+To re-encrypt with new password
+---
 ```
 download https://github.com/jasypt/jasypt/releases/tag/jasypt-1.9.3
 unzip jasypt-1.9.3-dist.zip
