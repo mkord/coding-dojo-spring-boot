@@ -2,5 +2,7 @@ package com.assignment.spring.data;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface WeatherRepository extends CrudRepository<WeatherEntity, Integer> {
+import java.util.UUID;
+
+public interface WeatherRepository extends CrudRepository<WeatherEntity, UUID> {
 }

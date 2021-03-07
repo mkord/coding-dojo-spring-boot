@@ -19,7 +19,6 @@
         <jackson.version>2.12.1</jackson.version>
         <testcontainers.version>1.15.2</testcontainers.version>
         <junit.jupiter.version>5.7.1</junit.jupiter.version>
-        <!--        <postgresql.jdbc.version>9.4-1206-jdbc42</postgresql.jdbc.version>-->
         <postgresql.jdbc.version>42.2.19</postgresql.jdbc.version>
     </properties>
 
@@ -31,6 +30,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,6 +64,11 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>6.6</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

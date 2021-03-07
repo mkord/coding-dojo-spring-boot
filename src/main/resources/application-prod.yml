@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    hikari:
+      connectionTimeout: 5000
+      maximumPoolSize: 50
+    url: jdbc:postgresql://localhost:5432/weather-db
+    username: weather-db
+    password: ENC(iwleUX3XXnt+sVBKdccozVS44zkLsiaTjirxO174lvr0ySy+mVY2YZ+vHobG+UXl)
+
+app:
+  openweather:
+    appid: ENC(rIpMAyEgRyNw2Guy+zclxM3ZyAj1VacjYnQ4tINzZRYkdVPUlgBJ5TGE7DED9jGhPkD4t2GZof35WTNoNv/dLZCQw3bQL7/dLKSt3J4+Arw=)
