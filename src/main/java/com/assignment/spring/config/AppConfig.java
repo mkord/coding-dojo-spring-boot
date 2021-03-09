@@ -1,6 +1,8 @@
 package com.assignment.spring.config;
 
+import com.assignment.spring.WeatherService;
 import com.assignment.spring.client.OpenWeatherClient;
+import com.assignment.spring.data.WeatherRepository;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,5 +24,10 @@ public class AppConfig {
     @Bean
     public OpenWeatherClient openWeatherClient() {
         return new OpenWeatherClient(openWeatherApiProperties(), restTemplate());
+    }
+
+    @Bean
+    public WeatherService weatherService(WeatherRepository weatherRepository) {
+        return new WeatherService(weatherRepository, openWeatherClient());
     }
 }

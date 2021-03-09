@@ -2,15 +2,16 @@ package com.assignment.spring.client;
 
 import com.assignment.spring.api.WeatherResponse;
 import com.assignment.spring.config.OpenWeatherApiProperties;
+import java.net.URI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.net.URI;
 
 public class OpenWeatherClient {
     private final OpenWeatherApiProperties apiProperties;
     private final RestTemplate restTemplate;
 
+    @Autowired
     public OpenWeatherClient(OpenWeatherApiProperties apiProperties, RestTemplate restTemplate) {
         this.apiProperties = apiProperties;
         this.restTemplate = restTemplate;
