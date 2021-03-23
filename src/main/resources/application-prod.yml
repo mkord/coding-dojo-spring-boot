@@ -10,3 +10,8 @@ spring:
 app:
   openweather:
     appid: ENC(rIpMAyEgRyNw2Guy+zclxM3ZyAj1VacjYnQ4tINzZRYkdVPUlgBJ5TGE7DED9jGhPkD4t2GZof35WTNoNv/dLZCQw3bQL7/dLKSt3J4+Arw=)
+
+  weather:
+    update:
+      updateOlderThenInMinutes: 15
+      maxCallsPerMinutes: 60

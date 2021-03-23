@@ -17,3 +17,9 @@ app:
     url: http://api.openweathermap.org/data/2.5/weather
     appid: c95bcc176fcd165de1d38eed87d52037
 
+  weather:
+    update:
+      fixedDelayInMilliseconds: 60000
+      updateOlderThenInMinutes: 1
+      maxCallsPerMinutes: 10
+
