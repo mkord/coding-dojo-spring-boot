@@ -8,6 +8,7 @@ import com.assignment.spring.data.WeatherEntity;
 import com.assignment.spring.data.WeatherRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ class WeatherControllerIT {
     public static final String ERROR_MESSAGE = "Something unpredictable happens";
     public static final String WEATHER_ENDPOINT = "/weather";
     public static final String CITY_KRAKOW = "Krakow";
-    private WeatherResponse openWeatherSampleResponse = parseWeatherResponse();
+    private WeatherResponse openWeatherSampleResponse;
 
     @Autowired
     private MockMvc mockMvc;
@@ -48,8 +49,16 @@ class WeatherControllerIT {
     @Autowired
     private WeatherRepository weatherRepository;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @MockBean
     private OpenWeatherClient openWeatherClient;
+
+    @BeforeAll
+    void setUp() {
+        openWeatherSampleResponse = parseWeatherResponse();
+    }
 
     @Test
     @Transactional
@@ -70,6 +79,7 @@ class WeatherControllerIT {
         assertThat(weatherFromDb.getCity()).isEqualTo(expectedWeather.getCity());
         assertThat(weatherFromDb.getCountry()).isEqualTo(expectedWeather.getCountry());
         assertThat(weatherFromDb.getTemperature()).isEqualTo(expectedWeather.getTemperature());
+        assertThat(weatherFromDb.getUpdateTime()).isEqualTo(expectedWeather.getUpdateTime());
     }
 
     @Test
@@ -86,7 +96,7 @@ class WeatherControllerIT {
 
     private WeatherResponse parseWeatherResponse() {
         try {
-            return new ObjectMapper().readValue(OPEN_WEATHER_SAMPLE_RESPONSE, WeatherResponse.class);
+            return objectMapper.readValue(OPEN_WEATHER_SAMPLE_RESPONSE, WeatherResponse.class);
         } catch (JsonProcessingException e) {
             throw new IllegalArgumentException("Cannot parse sample openWeather JSON response");
         }
@@ -94,7 +104,7 @@ class WeatherControllerIT {
 
     private WeatherEntity extractFromMvcResult(MvcResult mvcResult)
             throws UnsupportedEncodingException, JsonProcessingException {
-        return new ObjectMapper().readValue(
+        return objectMapper.readValue(
                 mvcResult.getResponse().getContentAsString(), WeatherEntity.class);
     }
 }

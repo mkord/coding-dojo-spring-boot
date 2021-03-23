@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -17,6 +18,7 @@ public class WeatherEntity {
     private String city;
     private String country;
     private BigDecimal temperature;
+    private LocalDateTime updateTime;
 
     public UUID getId() {
         return id;
@@ -48,5 +50,13 @@ public class WeatherEntity {
 
     public void setTemperature(BigDecimal temperature) {
         this.temperature = temperature;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

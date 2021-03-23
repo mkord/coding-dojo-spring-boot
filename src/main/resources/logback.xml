@@ -26,7 +26,7 @@
             }
           },
           &quot;application&quot;: {
-            &quot;name&quot;: &quot;pnrc-nfm&quot;
+            &quot;name&quot;: &quot;coding-dojo-spring-boot&quot;
           },
           &quot;shortMsg&quot;: &quot;[%-5.5level][%-25.-25thread][%-30.-30logger{0}]%.-120msg &quot;
         }"/>
@@ -113,9 +113,14 @@
     </springProfile>
 
     <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+<!--
         <root level="WARN">
             <appender-ref ref="ASYNC_JSON_FILE_APPENDER"/>
         </root>
+-->
     </springProfile>
 
 </configuration>

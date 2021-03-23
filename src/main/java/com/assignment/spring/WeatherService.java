@@ -5,6 +5,7 @@ import com.assignment.spring.client.OpenWeatherClient;
 import com.assignment.spring.data.WeatherEntity;
 import com.assignment.spring.data.WeatherRepository;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class WeatherService {
@@ -35,6 +36,7 @@ public class WeatherService {
         entity.setCity(response.getName());
         entity.setCountry(response.getSys().getCountry());
         entity.setTemperature(BigDecimal.valueOf(response.getMain().getTemp()));
+        entity.setUpdateTime(LocalDateTime.now());
         return entity;
     }
 }
