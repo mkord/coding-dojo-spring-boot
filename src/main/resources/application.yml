@@ -20,6 +20,6 @@ app:
   weather:
     update:
       fixedDelayInMilliseconds: 60000
-      updateOlderThenInMinutes: 1
+      updateOlderThenInMinutes: 5
       maxCallsPerMinutes: 10
 
